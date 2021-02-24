@@ -5,12 +5,17 @@ const app = {
             { Pname: "Red Bull Racing F1", Dname: "Daniel Ricardo", img: 'https://images.unsplash.com/photo-1503945839639-aea48daa250f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', done: false, show: true },
             { Pname: "Scuderia Ferrari F1", Dname: "Sebastian Vettel", img: 'https://images.unsplash.com/photo-1590214074323-fd5649874bee?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', done: false, show: true }],
             search: '',
-            bigpic: {check:false,index:0}
+            showsearch:false,
+            bigpic: {check:false,index:0},
         }
     },
     methods: {
         toggleDone(index) {
             this.pics[index].done = !this.pics[index].done
+        },
+        changSearch(){
+            this.showsearch = !this.showsearch;
+            this.search='';
         },
         searching() {
             for (let i = 0; i < this.pics.length; i++) {
