@@ -1,6 +1,6 @@
 app.component('photo-search', {
     props: {
-        pics:Array,
+        pics: Array,
     },
     template:
         /*html*/

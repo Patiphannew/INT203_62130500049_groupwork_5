@@ -1,7 +1,7 @@
 app.component('photo-view', {
     props: {
-        pics:Array,
-        bigpic:Array,
+        pics: Array,
+        bigpic: Array,
     },
     template:
         /*html*/
@@ -16,8 +16,8 @@ app.component('photo-view', {
         }
     },
     methods: {
-        check(index){
-            this.$emit('check-img',index)
+        check(index) {
+            this.$emit('check-img', index)
         }
     },
 })

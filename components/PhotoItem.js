@@ -1,7 +1,7 @@
 app.component('photo-item', {
     props: {
-        pics:Array,
-        bigpic:Array,
+        pics: Array,
+        bigpic: Array,
     },
     template:
         /*html*/
@@ -30,8 +30,8 @@ app.component('photo-item', {
         toggleDone(index) {
             this.pics[index].done = !this.pics[index].done
         },
-        check(index){
-            this.$emit('check-img',index)
+        check(index) {
+            this.$emit('check-img', index)
         }
     },
 })
