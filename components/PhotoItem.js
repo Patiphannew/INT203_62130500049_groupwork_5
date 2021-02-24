@@ -1,27 +1,37 @@
-const app = Vue.createApp({
+app.component('photo-item', {
+    props: {
+        pics:Array,
+        bigpic:Array,
+    },
+    template:
+        /*html*/
+        `<div :class="[!bigpic.check ? 'w-full' : 'w-1/3']">
+        <div :class="[!bigpic.check ? 'flex justify-center mx-auto py-4' : 'flex justify-end py-5']"
+            v-for="(pic,index) in pics" v-show="pic.show">
+            <div class="p-4 bg-gray-200 rounded-xl max-w-lg hover:shadow">
+                <div class="flex justify-between w-full "> <img v-bind:src="pic.img" class="cursor-pointer"
+                        @click="check(index)" width="400" class="rounded-lg">
+                    <div class="ml-2 cursor-pointer" @click="toggleDone(index)">
+                        <div class="p-3">
+                            <h3 class="text-2xl">{{pic.Pname}}</h3> <span>{{pic.Dname}}</span>
+                            <i v-show="pic.done" class="material-icons text-2xl ml-14 text-red-500">favorite</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `,
     data() {
         return {
-            pics: [{ Pname: "Mercedes-AMG Petronas F1", Dname: "Lewis Hamilton", img: 'https://images.unsplash.com/photo-1532906619279-a4b7267faa66?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80', done: false, show: true },
-            { Pname: "Red Bull Racing F1", Dname: "Daniel Ricardo", img: 'https://images.unsplash.com/photo-1503945839639-aea48daa250f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', done: false, show: true },
-            { Pname: "Scuderia Ferrari F1", Dname: "Sebastian Vettel", img: 'https://images.unsplash.com/photo-1590214074323-fd5649874bee?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', done: false, show: true }],
-            search: '',
-            showsearch: false,
-            bigpic: { check: false, index: 0 },
         }
     },
     methods: {
         toggleDone(index) {
             this.pics[index].done = !this.pics[index].done
         },
-    }
+        check(index){
+            this.$emit('check-img',index)
+        }
+    },
 })
-
-app.component('favorite-item', {
-    props: ['item'],
-    /*html*/
-    template:
-        `<div>
-    </div>`
-})
-
-app.mount('#app')
